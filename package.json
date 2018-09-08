@@ -1,0 +1,22 @@
+{
+  "name": "noddy-node",
+  "version": "1.0.0",
+  "description": "simple node webservice",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jolowres/noddy-node.git"
+  },
+  "author": "Jo Lowres",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jolowres/noddy-node/issues"
+  },
+  "homepage": "https://github.com/jolowres/noddy-node#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
