@@ -9,6 +9,11 @@ function getProduct (req, res, next) {
     })
 }
 
+function updateProduct (req, res, next) {
+    res.json(req.body)
+}
+
 module.exports = {
-    getProduct: getProduct
+    getProduct,
+    updateProduct
 }
