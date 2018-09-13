@@ -10,7 +10,7 @@ function getProduct (req, res, next) {
 }
 
 function updateProduct (req, res, next) {
-    res.json(req.body)
+    res.json(req.body.product)
 }
 
 module.exports = {
