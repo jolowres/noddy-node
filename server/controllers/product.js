@@ -1,21 +1,16 @@
 const fs = require('fs')
 const DATA_DIR = './data'
 
-function readFiles() {
-
-}
-
 function getProducts (req, res, next) {
     var products = []
 
-
-    var myPromise = new Promise((resolve, reject) => {
+    var readDirPromise = new Promise((resolve, reject) => {
         fs.readdir(DATA_DIR, (err, filenames) =>  {
             resolve(filenames)
         })
     })
 
-    myPromise.then(filenames => Promise.all(filenames.map((filename) => {
+    readDirPromise.then(filenames => Promise.all(filenames.map((filename) => {
         return new Promise((resolve, reject) => {
             var fullPath = DATA_DIR + '/' + filename
             fs.readFile(fullPath, (err, data) => {
@@ -31,9 +26,10 @@ function getProducts (req, res, next) {
     }))
 }
 
-function getProduct (req, res, next) {
+function getProductById (req, res, next) {
     var products
-    fs.readFile('./data/products.json', (err, data) => {
+    var filename = DATA_DIR + '/' + req.params.id + '.json'
+    fs.readFile(filename, (err, data) => {
         if (err) throw err
         products = JSON.parse(data) 
         res.send(products)
@@ -45,7 +41,7 @@ function updateProduct (req, res, next) {
 }
 
 module.exports = {
-    getProduct,
+    getProductById,
     getProducts,
     updateProduct
 }
