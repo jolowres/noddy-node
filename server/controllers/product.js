@@ -37,7 +37,12 @@ function getProductById (req, res, next) {
 }
 
 function updateProduct (req, res, next) {
-    res.json(req.body.product)
+    var productJSON = JSON.stringify(req.body.product)
+    var filename = DATA_DIR + '/' + req.body.product.productCode + '.json'
+    fs.writeFile(filename, productJSON, 'utf8', (err) => {
+        if (err) throw err
+        res.sendStatus(200)
+    })
 }
 
 module.exports = {
