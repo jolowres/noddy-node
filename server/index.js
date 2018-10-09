@@ -8,5 +8,6 @@ app.use(cors)
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use('/', require('./services/product'))
+// cache products
 dataService.getData()
 module.exports = app
